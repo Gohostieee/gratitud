@@ -33,7 +33,7 @@ const Header = ({url}: data) => {
     const [shadow, useShadow] = useState<boolean>(false)
 
     function Parse() {
-        const array = []
+        const array: any[] = [];
         menuItems.forEach(x => {
             if (x[1] == url) {
                 array.push(<div className={"m-auto mb-4 mt-4"}>
@@ -73,7 +73,7 @@ const Header = ({url}: data) => {
                                 }
                                 useShadow(tempShadow)
                             }} htmlFor="my-drawer"
-                                   className=" cursor-pointer h-[24px] mr-4 drawer-button mt-9 relative"><Image
+                                   className=" cursor-pointer h-[24px] mr-4 drawer-button mt-9 relative"><Image alt = ''
                                 src={hamburger.src} width={32} height={32}/></label>
                         </div>
                         <div className="drawer-side top-[94px] fixed left-0 h-[100vh] z-[50]">
