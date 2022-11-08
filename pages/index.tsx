@@ -1,4 +1,5 @@
 import isp from "../ASSETS/isorrowproductions.jpg"
+import img2 from "../ASSETS/danielacorrea.png"
 import heart from "../ASSETS/HEART ICON.png"
 import Image from "next/image";
 import Link from "next/link";
@@ -82,38 +83,39 @@ export default function Home() {
                 <div className={"relative top-[128px] h-screen flex flex-col justify-center items-center bg-secondary mt-10"}>
                     <div className={"text-center lg:max-w-[50%]"}>                        
                         <h1 className={"text-primary lg:text-4xl text-3xl text-center"}>?Que puedes hacer con tu <span className={'font-bold'}>link de gratitud?</span></h1>
-                        <p className={"text-primary lg:text-2xl lg:mt-8 text-lg text-center font-mono "}>"La gratitud es uno de los sentimientos mas poderosos que puedes experimentar, y compartirlo es un privilegio
+                        <p className={"text-primary lg:text-2xl lg:mt-8 text-lg text-center"}>"La gratitud es uno de los sentimientos mas poderosos que puedes experimentar, y compartirlo es un privilegio
                              que llenal el alma de alegria en quien lo da y en quien lo recibe" </p>
-                        <p className={"text-primary lg:text-2xl lg:mt-8 text-lg text-center font-mono "}>"La gratitud es uno de los sentimientos mas poderosos que puedes experimentar, y compartirlo es un privilegio
+                        <p className={"text-primary lg:text-2xl lg:mt-8 text-lg text-center"}>"La gratitud es uno de los sentimientos mas poderosos que puedes experimentar, y compartirlo es un privilegio
                              que llenal el alma de alegria en quien lo da y en quien lo recibe" </p>
-                        <Link href = {"/signin"}>
-                            <button className={"rounded-full bg-accent text-secondary lg:text-2xl min-w[100px] lg:p-5 p-2 text-center font-bold font-mono mt-10"}>Crear una cuenta</button>
+                        <Link href = {"/"}>
+                            <button className={"rounded-full bg-accent text-secondary lg:text-2xl min-w[100px] lg:p-5 p-2 text-center font-bold font-mono mt-10 m-auto"}>Crear una cuenta</button>
                         </Link>
                     </div>
                 </div>
                 <div className={"h-screen flex flex-col md:flex-row sm:flex-row relative top-[128px] m-auto bg-white "}>
                     <div className={"flex flex-col lg:w-[900px] w-[380px] lg:mr-64 lg:mt-24 lg:pr-8 m-auto"}>                        
-                        <h1 className={"text-primary lg:text-4xl text-3xl lg:text-left text-center lg:ml-24 mb-12"}>?Que puedes hacer con tu <span className={'font-bold'}>link de gratitud?</span></h1>
-                        <p className={"text-primary lg:text-2xl lg:mt-8 text-lg text-center lg:ml-24 font-mono "}>"La gratitud es uno de los sentimientos mas poderosos que puedes experimentar, y compartirlo es un privilegio
-                             que llenal el alma de alegria en quien lo da y en quien lo recibe" </p>
-                        <p className={"text-primary lg:text-2xl lg:mt-8 text-center lg:ml-24 font-mono "}>"La gratitud es uno de los sentimientos mas poderosos que puedes experimentar, y compartirlo es un privilegio
-                        que llenal el alma de alegria en quien lo da y en quien lo recibe" </p>
+                        <h1 className={"text-primary lg:text-4xl text-3xl lg:text-left text-center lg:ml-24 mb-12"}>¿Que puedes hacer con tu <span className={'font-bold'}>link de gratitud</span>?</h1>
+                        <p className={"text-primary lg:text-2xl lg:mt-8 text-lg text-center lg:ml-24 "}>Comparte tu link de gratitud a tus seguidores, alumnos, pacientes, etc. y comienza a recibir testimonios por tu labor, así como donaciones en amor. Selecciona los destacados para que se muestren en tu perfil.</p>
+                        <p className={"text-primary lg:text-2xl lg:mt-8 text-lg text-center lg:ml-24 "}>Aumenta la reputación de tu trabajo y acelera el crecimiento de lo que más amas hacer.</p>
+                        <Link href = {"/signin"}>
+                            <button className={"rounded-full bg-accent text-secondary lg:text-2xl min-w[100px] lg:p-5 p-2 text-center font-bold font-mono mt-10"}>Crear una cuenta</button>
+                        </Link>
                     </div>
                     <div className = {'flex flex-col max-w-sm'}>
                         <img src="https://media.discordapp.net/attachments/1031728423384662118/1038919449966821428/person1.jpg" className="w-full"/>
                     </div>
                 </div>
-                <div className = {'h-screen mt-4 bg-neutral relative pt-10'}>
-                    <h1 className={"text-primary lg:text-4xl text-3xl text-center"}>?Que puedes hacer con tu <span className = {'text-primary lg:text-4xl text-3xl text-center font-bold'}>link de gratitud?</span></h1>
+                <div className = {' mt-4 bg-neutral relative pt-10'}>
+                    <h1 className={"text-primary lg:text-4xl text-3xl text-center"}>Conoce a otros <span className = {'text-primary lg:text-4xl text-3xl text-center font-bold'}>creadores como tú</span></h1>
                     <div className={"grid sm:grid-cols-1 lg:grid-cols-4 md:grid-cols-4 gap-y-5 gap-x-5 p-10 "}>
-                        <CreatorsCards name = 'John Programmer' src = {isp.src} occupation = 'Webdeveloper programmer and designer'/>
-                        <CreatorsCards name = 'John Programmer' src = {isp.src} occupation = 'Webdeveloper programmer and designer'/>
-                        <CreatorsCards name = 'John Programmer' src = {isp.src} occupation = 'Webdeveloper programmer and designer'/>
-                        <CreatorsCards name = 'John Programmer' src = {isp.src} occupation = 'Webdeveloper programmer and designer'/>
-                        <CreatorsCards name = 'John Programmer' src = {isp.src} occupation = 'Webdeveloper programmer and designer'/>
-                        <CreatorsCards name = 'John Programmer' src = {isp.src} occupation = 'Webdeveloper programmer and designer'/>
-                        <CreatorsCards name = 'John Programmer' src = {isp.src} occupation = 'Webdeveloper programmer and designer'/>
-                        <CreatorsCards name = 'John Programmer' src = {isp.src} occupation = 'Webdeveloper programmer and designer'/>
+                        <CreatorsCards name = 'Daniela Correa' src = {img2.src} occupation = 'Facilitadora de Conciencia'/>
+                        <CreatorsCards name = 'Daniela Correa' src = {img2.src} occupation = 'Facilitadora de Conciencia'/>
+                        <CreatorsCards name = 'Daniela Correa' src = {img2.src} occupation = 'Facilitadora de Conciencia'/>
+                        <CreatorsCards name = 'Daniela Correa' src = {img2.src} occupation = 'Facilitadora de Conciencia'/>
+                        <CreatorsCards name = 'Daniela Correa' src = {img2.src} occupation = 'Facilitadora de Conciencia'/>
+                        <CreatorsCards name = 'Daniela Correa' src = {img2.src} occupation = 'Facilitadora de Conciencia'/>
+                        <CreatorsCards name = 'Daniela Correa' src = {img2.src} occupation = 'Facilitadora de Conciencia'/>
+                        <CreatorsCards name = 'Daniela Correa' src = {img2.src} occupation = 'Facilitadora de Conciencia'/>
                     </div>
                 </div>
             </main>

@@ -19,8 +19,9 @@ export default function Page({children}: PageProps){
         <Header url={"/"}/>  
         <div data-theme={"mytheme"} className={""}>
             {children}
+            <Footer/>
         <div className={"fixed w-[100vw] top-0 z-[-1] h-[100%] bg-neutral left-0"}/>
         </div> 
-        <Footer/>
+        
     </>);
 }
