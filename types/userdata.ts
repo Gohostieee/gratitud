@@ -9,3 +9,7 @@ export interface userApiForm {
 
 
 }
+export interface usrlocaldata{
+	username:string,
+	password:string
+}

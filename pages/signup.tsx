@@ -5,13 +5,23 @@ import isp from "../ASSETS/isorrowproductions.jpg"
 import heart from "../ASSETS/HEART ICON.png"
 import Image from "next/image";
 import Link from "next/link";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import {userApiForm} from "../types/userdata";
 import {response} from "../types/api";
 import {json} from "stream/consumers";
-
+import {SavedCreds} from "../scripts/userAuth"
 export default function Home() {
+    useEffect(()=>{
+        async function checkcreds(){
+            if( await SavedCreds()) {
+                window.location.href = "/profile"
+            }
+
+        }
+        checkcreds()
+
+    },[])
     interface influencerData {
         amount:string,
         name:string,
