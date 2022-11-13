@@ -1,4 +1,4 @@
-import {usrlocaldata} from "../types/userdata"
+import {requserdata, usrlocaldata} from "../types/userdata"
 import axios from "axios";
 import {response} from "../types/api";
 
@@ -21,4 +21,11 @@ export async function SavedCreds() {
 	} else {
 		return false
 	}
+}
+
+export async function getUserData({username,password,access}:requserdata):Promise<response>{
+	if(access == undefined || username == undefined || password == undefined){
+			return ({status:"rejected",data:"bad data"})
+	}
+	return(await axios({url:`/api/users/profile?username=${username}&password=${password}&access=${access}`,method:"GET"}))
 }

@@ -10,7 +10,7 @@ import axios from "axios";
 import {userApiForm} from "../types/userdata";
 import {response} from "../types/api";
 import {json} from "stream/consumers";
-import {SavedCreds} from "../scripts/userAuth"
+import {SavedCreds} from "../scripts/userFuncs"
 export default function Home() {
     useEffect(()=>{
         async function checkcreds(){
