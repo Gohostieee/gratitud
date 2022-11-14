@@ -21,7 +21,6 @@ const Header = ({url}: data) => {
         let tempWindow = null
         if (typeof window !== 'undefined') {
             tempWindow = window
-
         }
         useWindow(tempWindow)
     })*/
