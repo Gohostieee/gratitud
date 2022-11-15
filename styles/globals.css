@@ -7,11 +7,12 @@ body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    background: #FCF8F8;
+    background: #fcfcfc;
+    pointer-events: auto;
 
 }
  html {
-     background: #FCF8F8;
+     background: #fcfcfc;
 
  }
 a {
@@ -26,7 +27,7 @@ a {
 
 .backgroundCol {
 
-    background: #FCF8F8;
+    background: #fcfcfc;
 }
 .softbtn {
     background: transparent;
@@ -35,4 +36,18 @@ a {
 .hardbtn {
     background: #A07260;
     color: #F1EBE8;
+}
+.slidein {
+    animation: slidein 2s ease-out;
+}
+@keyframes slidein {
+    0%{
+        opacity: 0;
+        margin-left: -100vw;
+    }
+
+    100%{
+        opacity: 100;
+        margin-left: 0;
+    }
 }

@@ -1,7 +1,27 @@
+import Head from 'next/head'
+import styles from '../styles/Home.module.css'
+import Header from "../components/header";
+import isp from "../ASSETS/isorrowproductions.jpg"
 import heart from "../ASSETS/HEART ICON.png"
 import Image from "next/image";
 import Link from "next/link";
+import {useEffect, useState} from "react";
+import axios from "axios";
+import {userApiForm} from "../types/userdata";
+import {response} from "../types/api";
+import {json} from "stream/consumers";
+import {SavedCreds} from "../scripts/userFuncs"
 export default function Home() {
+    useEffect(()=>{
+        async function checkcreds(){
+            if( await SavedCreds()) {
+                window.location.href = "/profile"
+            }
+
+        }
+        checkcreds()
+
+    },[])
     interface influencerData {
         amount:string,
         name:string,
@@ -9,33 +29,95 @@ export default function Home() {
         src:string,
         href:string
     }
+    async function submitForm(e:any) {
+        e.preventDefault()
+        const userData:userApiForm = {
+            username:e.target.nombre.value,
+            password:e.target.contrasena.value,
+            creatorLink:e.target.link.value,
+            email:e.target.email.value
+        }
+        let error="Unknown error has occurred"
+        await axios({url:"/api/users/profile",method:"POST",data:userData}).then(
+                function(e){
+                    const {data,status}:response = e.data
+                switch(status){
+                    case "passed":
+                        localStorage.setItem("userdata",JSON.stringify({username:userData.username,password:userData.password}))
+                        error=""
+                        break
+                    case "rejected":
+                        error = data
+                        break
+                }
+        }).finally(function SetError(){
+            useError(error)
+        })
 
-    function parseCard ({amount,name,occupation,src,href}:influencerData) {
-
-        return (
-            <div id="item1" className="carousel-item w-full min-h-[400px] justify-center flex flex-col mb-4 ">
-                <div className={"w-[150px] h-[90px] mb-4 border-accent border-2 rounded-lg bg-neutral m-auto"}>
-
-                    <Image src={heart.src} alt={"hear"} width={32} height={32} className={"m-auto mt-4"}/>
-                    <p className={"text-accent text-center text-3xl font-light"}>{amount}</p>
-
-                </div>
-                <Image alt = {name} width={240} height={200} src={src} className="w-full h-[200px] m-auto object-none mask mask-circle"/>
-                <div>
-                    <p className={"text-primary text-center text-3xl "}>{name}</p>
-                    <div className="divider w-[50%] m-auto"></div>
-                    <p className={"text-primary text-center"}>{occupation}</p>
-                </div>
-                <Link href={href} className={"m-auto"}><button className={"w-[122px] h-[42px] text-accent rounded-3xl mt-4 text-lg  m-auto bg-neutral border-accent border-2"}>Gratitud</button></Link>
-            </div>
-        )
     }
+    const form = [<div className={`z-[5] slidein relative`}>
+        <p className={"text-2xl h-[32px] text-primary text-left m-auto"}>Que link deseas?</p>
+        <div className={"w-[620px]  bg-base-200 p-4 border-2 rounded-2xl pl-2 border-accent bg-opacity-50 shadow-xl flex justify-start"}>
+            <p className={"text-xl font-mont border-primary h-[32px] text-primary text-left"}>www.gratitud.com/</p>
+            <input name={"link"} className={"text-xl font-mont border-primary relative top-[-2px] ml-1 w-[100%] outline-0 relative bg-opacity-0 bg-primary text-primary text-left"} placeholder={"tu url aca"}/>
+        </div>
+    </div>,
+        <div className={`z-[10] slidein  mt-12 relative`}>
+            <p className={"text-2xl text-primary text-left m-auto"}>Que nombre deseas?</p>
+            <div className={"w-[620px] bg-base-200 border-2 p-4 border-accent rounded-2xl bg-opacity-50 shadow-xl flex justify-start"}>
+                <input name={"nombre"} className={"text-xl relative top-[-2px] w-[100%] ml-1 outline-0 relative bg-opacity-0 bg-primary text-primary text-left"} placeholder={"tu nombre aca"}/>
+            </div>
+        </div>,
+        <div className={`z-[10] slidein  mt-12 relative`}>
+            <p className={"text-2xl h-[32px] text-primary text-left m-auto"}>Que contraseña deseas?</p>
+            <div className={"w-[620px] border-2 p-4 border-accent rounded-2xl bg-base-200 bg-opacity-50 shadow-xl flex justify-start"}>
+                <input name={"contrasena"} className={"text-xl font-mont border-primary relative top-[-2px] w-[100%] ml-e outline-0 relative bg-opacity-0 bg-primary text-primary text-left"} placeholder={"tu contraseña aca"}/>
+            </div>
+        </div>,
+        <div className={`z-[10] slidein  mt-12 relative`}>
+            <p className={"text-2xl h-[32px] text-primary text-left m-auto"}>Que email deseas?</p>
+            <div className={"w-[620px] border-2 p-4 border-accent rounded-2xl bg-base-200 bg-opacity-50 shadow-xl flex justify-start"}>
+                <input name={"email"} className={"text-xl font-mont border-primary relative top-[-2px] w-[100%] ml-e outline-0 relative bg-opacity-0 bg-primary text-primary text-left"} placeholder={"tu email aca"}/>
+            </div>
+        </div>,
+    ]
+    const [level,useLevel] = useState(1), [error,useError] = useState("");
+
     return (
-            <main className={"m-auto"}>
+        <div data-theme={"mytheme"} className={""}>
+            <Head>
+                <title>Create Next App</title>
+                <meta name="description" content="Generated by create next app"/>
+                <link rel="icon" href="/favicon.ico"/>
+            </Head>
+            <main className={"m-auto bg-neutral"}>
+                <Header url={"/signup"}/>
                 <div className={"flex m-auto top-[94px] relative flex-col justify-center text-center"}>
-                    <p className={"text-3xl h-[32px] text-primary text-center inline-flex m-auto  mt-24"}>Crea una cuenta con tu <p className={"text-3xl font-bold underline ml-1 mr-1"}> URL </p> personalizado <p className={"text-3xl font-bold underline ml-1 align-text-top"}>gratis</p></p>
+                    <div className={"text-3xl h-[32px] text-primary text-center inline-flex m-auto  mt-24"}>Crea una cuenta con tu <p className={"text-3xl font-bold underline ml-1 mr-1"}> URL </p> personalizado <p className={"text-3xl font-bold underline ml-1 align-text-top"}>gratis</p></div>
+                    <div className={"m-auto mt-12 w-[620px] relative"}>
+                        <form onSubmit={submitForm}>
+
+                        <p className={"text-2xl h-[32px] text-accent underline text-center m-auto"}>{error}</p>
+
+                        {
+                            form.splice(0,level)
+                        }
+                        {form.length>0 ?
+                            <button type={"button"} onClick={function SetLevel(){
+                                useLevel(level+1)
+                            }} className={`mt-12 m-auto hardbtn transition-all p-2 rounded-3xl pl-4 pr-4`}>Siguiente</button>
+                            :
+                            <button type={"submit"} className={`mt-12 m-auto hardbtn p-2 rounded-3xl pl-4 pr-4`}>Crear cuenta</button>
+                        }
+                        </form>
+
+
+
+                    </div>
                 </div>
             </main>
+            <div className={"fixed w-[100vw] top-0 z-[-1] h-[100%] bg-neutral left-0"}/>
 
+        </div>
     )
 }

@@ -2,7 +2,7 @@ const Logo = () => {
 
 
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="348" height="111" viewBox="0 0 348 111">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="348" height="111" viewBox="0 0 348 111">
             <defs>
                 <clipPath id="clip-logo_gratitud">
                     <rect width="348" height="111"/>
